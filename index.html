@@ -28,13 +28,19 @@ body {
     text-align: center;
     cursor: pointer;
 }
-        </style>
-        <script type="text/javascript">
-function modal(elt) {
-    var category = elt.className;
-    alert(category);
+.ingredients td.charcut:active::before {
+    content: '🐷 🐷 🐷 ';
 }
-        </script>
+.ingredients td.charcut:active::after {
+    content: ' 🐷 🐷 🐷';
+}
+.ingredients td.frometon:active::before {
+    content: '🧀 🧀 🧀 ';
+}
+.ingredients td.frometon:active::after {
+    content: ' 🧀 🧀 🧀';
+}
+        </style>
     </head>
     <body>
         <table class="ingredients">
@@ -59,7 +65,7 @@ function modal(elt) {
             document.getElementById('content').innerHTML =
                 data.map(({name, type}) => `
                     <tr>
-                        <td class="${getClass[type]}" onClick="modal(this);">
+                        <td class="${getClass[type]}">
                           ${name}
                         </td>
                     </tr>
