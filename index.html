@@ -37,37 +37,32 @@ function modal(elt) {
     </head>
     <body>
         <table class="ingredients">
-            <tbody>
-                <tr>
-                    <td class="charcut 🐷" onClick="modal(this);">Bresaola</td>
-                </tr>
-                <tr>
-                    <td class="frometon 🧀" onClick="modal(this);">Burrata</td>
-                </tr>
-                <tr>
-                    <td class="charcut 🐷" onClick="modal(this);">Coppa</td>
-                </tr>
-                <tr>
-                    <td class="frometon 🧀" onClick="modal(this);">Mozzarella</td>
-                </tr>
-                <tr>
-                    <td class="charcut 🐷" onClick="modal(this);">Pancetta</td>
-                </tr>
-                <tr>
-                    <td class="charcut 🐷" onClick="modal(this);">Prosciutto</td>
-                </tr>
-                <tr>
-                    <td class="frometon 🧀" onClick="modal(this);">Ricotta</td>
-                </tr>
-                <tr>
-                    <td class="frometon 🧀" onClick="modal(this);">Scamorza</td>
-                </tr>
-                <tr>
-                    <td class="frometon 🧀" onClick="modal(this);">Stracciatella</td>
-                </tr>
-            </tbody>
+            <tbody id="content" />
         </table>
-
         <p class="contribute">Contribute on <a href="https://github.com/lrqdo/charcut-ou-frometon/">Github</a></p>
+        <script>
+            var data = [
+                { name: "Burrata", type: "frometon"},
+                { name: "Coppa", type: "charcut"},
+                { name: "Mozzarella", type: "frometon"},
+                { name: "Pancetta", type: "charcut"},
+                { name: "Prosciutto", type: "charcut"},
+                { name: "Ricotta", type: "frometon"},
+                { name: "Scamorza", type: "frometon"},
+                { name: "Stracciatella", type: "frometon"},
+            ];
+            const getClass = {
+                charcut: "charcut 🐷",
+                frometon: "frometon 🧀",
+            }
+            document.getElementById('content').innerHTML =
+                data.map(({name, type}) => `
+                    <tr>
+                        <td class="${getClass[type]}" onClick="modal(this);">
+                          ${name}
+                        </td>
+                    </tr>
+                `).join('');
+        </script>
     </body>
 </html>
